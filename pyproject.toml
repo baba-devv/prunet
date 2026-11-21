@@ -3,7 +3,10 @@ name = "pruning-autograd"
 version = "0.1.0"
 description = "A from-scratch NumPy autodiff engine and a self-pruning MLP built on it."
 requires-python = ">=3.10"
-dependencies = ["numpy>=1.26"]
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+]
 
 [dependency-groups]
 dev = ["pytest>=8"]
