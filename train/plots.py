@@ -215,3 +215,83 @@ def plot_criterion_check(result: dict, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=160, facecolor=SURFACE)
     plt.close(fig)
+
+
+def plot_pareto(analysis: dict, path: Path) -> None:
+    """Accuracy vs weights remaining, the paired difference, and accuracy vs real (compact) cost."""
+    import numpy as np
+
+    levels, dense = analysis["levels"], analysis["dense"]
+    total = analysis["num_weights"]
+    criteria = ("magnitude", "fisher")
+    names = {"magnitude": "magnitude", "fisher": "Fisher saliency"}
+
+    fig, (ax_acc, ax_diff, ax_cost) = plt.subplots(1, 3, figsize=(16, 4.9), facecolor=SURFACE)
+
+    # 1. accuracy vs fraction of weights remaining
+    remaining = [1 - lv["sparsity"] for lv in levels]
+    ax_acc.axhspan(dense["test_mean"] - dense["test_std"], dense["test_mean"] + dense["test_std"], color=GRID, alpha=0.6, lw=0)
+    ax_acc.axhline(dense["test_mean"], color=NEUTRAL, linewidth=1.2, linestyle="--")
+    ax_acc.text(1.0, dense["test_mean"], f"dense {dense['test_mean']:.2f}%  ", ha="right", va="bottom", fontsize=8,
+                color=TEXT_SECONDARY, transform=ax_acc.get_yaxis_transform())
+    for c in criteria:
+        for x, lv in zip(remaining, levels):
+            ax_acc.scatter([x] * len(lv[c]["test_acc"]), lv[c]["test_acc"], s=9, color=CRITERION_COLORS[c], alpha=0.35, linewidths=0)
+        means = [lv[c]["test_mean"] for lv in levels]
+        ax_acc.plot(remaining, means, color=CRITERION_COLORS[c], linewidth=2, marker="o", markersize=4.5, label=names[c])
+    ax_acc.set_xscale("log")
+    ax_acc.invert_xaxis()
+    ax_acc.set_xticks(remaining)
+    ax_acc.set_xticklabels([f"{100 * lv['sparsity']:.0f}%" for lv in levels])
+    ax_acc.minorticks_off()
+    _style(ax_acc, "Test accuracy (dots: seeds, line: mean)", "test accuracy (%)")
+    ax_acc.set_xlabel("sparsity (log scale in weights remaining)", color=TEXT_SECONDARY, fontsize=9)
+    ax_acc.legend(frameon=False, fontsize=9, labelcolor=TEXT_SECONDARY, loc="lower left")
+
+    # 2. paired difference with intervals
+    positions = np.arange(len(levels))
+    ax_diff.axhline(0, color=NEUTRAL, linewidth=1.2, linestyle="--")
+    for i, lv in enumerate(levels):
+        p = lv["paired"]
+        ax_diff.scatter([i] * len(p["differences"]), p["differences"], s=9, color=INK, alpha=0.3, linewidths=0)
+        low, high = p["ci_two_level"]
+        ax_diff.errorbar(i, p["mean"], yerr=[[p["mean"] - low], [high - p["mean"]]], fmt="o", color=INK, markersize=5,
+                         capsize=4, linewidth=1.6)
+        ax_diff.annotate(f"p={p['holm_p']:.3f}", xy=(i, high), xytext=(0, 6), textcoords="offset points",
+                         ha="center", fontsize=7.5, color=TEXT_SECONDARY)
+    ax_diff.set_xticks(positions)
+    ax_diff.set_xticklabels([f"{100 * lv['sparsity']:.0f}%" for lv in levels])
+    _style(ax_diff, "Magnitude − Fisher, paired by seed (95% CI, seeds + images)", "accuracy points (> 0: magnitude better)")
+    ax_diff.set_xlabel("sparsity  ·  p: exact sign-flip test, Holm-adjusted", color=TEXT_SECONDARY, fontsize=9)
+
+    # 3. accuracy vs what the network costs once dead units are removed
+    ax_cost.scatter([total], [dense["test_mean"]], s=40, color=NEUTRAL, zorder=3)
+    ax_cost.annotate("dense", xy=(total, dense["test_mean"]), xytext=(-6, 6), textcoords="offset points",
+                     ha="right", fontsize=8, color=TEXT_SECONDARY)
+    for c in criteria:
+        macs = [np.mean(lv[c]["compact_dense_macs"]) for lv in levels]
+        means = [lv[c]["test_mean"] for lv in levels]
+        for lv in levels:
+            ax_cost.scatter(lv[c]["compact_dense_macs"], lv[c]["test_acc"], s=9, color=CRITERION_COLORS[c], alpha=0.35, linewidths=0)
+        ax_cost.plot(macs, means, color=CRITERION_COLORS[c], linewidth=2, marker="o", markersize=4.5, label=names[c])
+        for x, y, lv in zip(macs, means, levels):
+            if lv["sparsity"] in (0.9, 0.98):
+                ax_cost.annotate(f"{100 * lv['sparsity']:.0f}%", xy=(x, y), xytext=(4, -10 if c == "fisher" else 6),
+                                 textcoords="offset points", fontsize=7.5, color=CRITERION_COLORS[c])
+    ax_cost.set_xscale("log")
+    ax_cost.invert_xaxis()
+    _style(ax_cost, "Accuracy vs work after removing dead units", "test accuracy (%)")
+    ax_cost.set_xlabel("dense multiply-accumulates per example after compaction (log)", color=TEXT_SECONDARY, fontsize=9)
+    ax_cost.legend(frameon=False, fontsize=9, labelcolor=TEXT_SECONDARY, loc="lower left")
+    for ax in (ax_acc, ax_cost):
+        ax.grid(axis="x", visible=False)
+
+    seeds = analysis["seeds"]
+    fig.suptitle(
+        f"Sparsity vs accuracy, {len(seeds)} seeds ({seeds[0]}–{seeds[-1]}), test split ({analysis['n_test']:,} images)",
+        x=0.01, ha="left", fontsize=12, color=TEXT, fontweight="bold",
+    )
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(path, dpi=160, facecolor=SURFACE)
+    plt.close(fig)
