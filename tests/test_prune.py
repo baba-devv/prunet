@@ -455,3 +455,16 @@ def test_pruning_runs_are_reproducible_and_dense_runs_ignore_pruning_options():
     other = run_experiment(ExperimentConfig(criterion="magnitude", regrow=0.5, **dense), log=None)
     assert plain["test"] == other["test"] and "pruning" not in plain
     assert plain["model"]["weight_sparsity"] == 0.0
+
+
+# --- rank statistics used by the criterion check --------------------------------------
+
+
+def test_rank_correlation_helpers():
+    from train.criterion_check import rank, spearman
+
+    np.testing.assert_array_equal(rank(np.array([10.0, 30.0, 20.0])), [0, 2, 1])
+    np.testing.assert_array_equal(rank(np.array([5.0, 1.0, 5.0, 5.0, 0.0])), [3, 1, 3, 3, 0])  # ties share their mean rank
+    x = np.array([0.1, 0.5, 0.2, 0.9, 0.4])
+    assert spearman(x, x**3) == pytest.approx(1.0)  # any increasing transform
+    assert spearman(x, -np.exp(x)) == pytest.approx(-1.0)
