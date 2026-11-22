@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from concurrent.futures import ProcessPoolExecutor
 from dataclasses import replace
-from typing import Iterable, Optional
+from typing import Callable, Iterable, Optional
 
 import numpy as np
 
@@ -18,8 +18,17 @@ def _run(config: ExperimentConfig) -> dict:
     return result
 
 
-def run_all(configs: Iterable[ExperimentConfig], workers: Optional[int] = None, label: str = "") -> list:
-    """Run every config; results come back in input order whatever the completion order."""
+def run_all(
+    configs: Iterable[ExperimentConfig],
+    workers: Optional[int] = None,
+    label: str = "",
+    on_result: Optional[Callable[[dict], None]] = None,
+) -> list:
+    """Run every config; results come back in input order whatever the completion order.
+
+    `on_result` is called with each result as soon as it is available (in input
+    order), e.g. to checkpoint a long sweep.
+    """
     configs = list(configs)
     workers = workers or max(1, min(len(configs), (os.cpu_count() or 2) // 2))
     results = []
@@ -32,6 +41,8 @@ def run_all(configs: Iterable[ExperimentConfig], workers: Optional[int] = None, 
                 f"val {100 * result['val']['acc']:.2f}%",
                 flush=True,
             )
+            if on_result is not None:
+                on_result(result)
             results.append(result)
     return results
 

@@ -37,6 +37,7 @@ class ExperimentConfig:
     schedule: str = "cubic"
     scope: str = "global"
     regrow: float = 0.0  # fraction of active connections swapped per mask update (cosine-decayed to 0)
+    regrow_grace: int = 1  # mask updates during which a revived connection cannot be dropped again
     prune_start: float = 0.1  # pruning begins / ends at these fractions of training;
     prune_end: float = 0.7  # the remainder is fine-tuning with a frozen mask
     prune_interval: int = 100  # optimizer steps between mask updates
@@ -65,6 +66,7 @@ def setup_experiment(config: ExperimentConfig) -> tuple:
             interval=config.prune_interval,
             scope=config.scope,
             regrow_fraction=config.regrow,
+            regrow_grace=config.regrow_grace,
             batch_size=config.batch_size,
             stats_decay=config.stats_decay,
             seed=int(prune_seq.generate_state(1)[0]),

@@ -312,6 +312,7 @@ def test_regrowth_swaps_keep_the_budget_and_revive_the_highest_mean_gradient_at_
     w = Parameter(np.linspace(4.0, 0.1, n))  # index 0 is the largest weight, index 39 the smallest
     pull = np.zeros(n)
     pull[28:] = [0.3, 2.0, 0.1, 5.0, 0.2, 0.05, 3.0, 0.4, 0.01, 4.0, 0.02, 0.03]  # mean dense gradient magnitudes
+    pull[24] = 9.0  # the strongest pull of all, on a connection that will be pruned in the same update as the swap
     pruner = Pruner(
         [w], "magnitude", 0.5, start_step=0, end_step=100, interval=25, regrow_fraction=0.4, batch_size=1, stats_decay=None
     )
@@ -341,6 +342,45 @@ def test_regrowth_swaps_keep_the_budget_and_revive_the_highest_mean_gradient_at_
     assert not w.mask[22:28].any()  # connections pruned in this very update are not candidates for regrowth
     summary = pruner.regrowth_summary()
     assert summary["regrow_events"] == 4 and summary["regrown_and_alive_at_end"] == 4
+
+
+def test_statistics_see_the_dense_gradient_of_masked_connections():
+    """Regrowth ranks masked connections, whose ordinary gradient is identically zero."""
+    w = Parameter(np.array([1.0, 2.0, 3.0]), mask=[True, False, True])
+    pruner = Pruner([w], "fisher", 0.5, batch_size=1, stats_decay=None)
+    (w.effective() * Tensor([0.5, -4.0, 2.0])).sum().backward()
+    pruner.after_backward()
+    assert w.grad[1] == 0.0
+    np.testing.assert_array_equal(pruner.stats[0].mean_g, [0.5, -4.0, 2.0])
+    np.testing.assert_array_equal(regrowth_score(pruner.stats[0]), [0.5, 4.0, 2.0])
+
+
+def _regrow_twice(grace):
+    """Prune, then two swap updates with no training in between, so revived weights are still 0."""
+    w = Parameter(np.linspace(4.0, 0.1, 40))
+    pruner = Pruner([w], "magnitude", 0.5, start_step=0, end_step=1000, interval=10, regrow_fraction=0.4,
+                    regrow_grace=grace, batch_size=1, stats_decay=None)
+    for step in (0, 10, 20, 30):
+        pruner.update(step)
+        w.zero_grad()
+        (w.effective() * Tensor(np.linspace(0.0, 1.0, 40))).sum().backward()
+        pruner.after_backward()
+    return pruner
+
+
+def test_grace_period_protects_newly_revived_connections_from_the_next_update():
+    """Connection 39 (the smallest weight) is pruned at step 10 and revived at step 20 for its large
+    gradient. It is still exactly 0 at step 30, so by magnitude it is the first to go again:
+    without a grace period the revival is undone immediately; with one it survives the update."""
+    thrash, protected = _regrow_twice(grace=0), _regrow_twice(grace=1)
+    for pruner in (thrash, protected):
+        assert pruner.times_revived[0][39] == 1
+        assert pruner.num_active == 38  # the budget is the same either way
+    assert not thrash.params[0].mask[39] and thrash.times_pruned[0][39] == 2
+    assert protected.params[0].mask[39] and protected.times_pruned[0][39] == 1
+    assert thrash.regrowth_summary()["pruned_more_than_once"] == 1
+    assert protected.regrowth_summary()["pruned_more_than_once"] == 0
+    assert (protected.grace_left[0][~protected.params[0].mask] == 0).all()  # protection never outlives the connection
 
 
 def test_regrowth_fraction_decays_to_zero_so_the_last_update_only_prunes():

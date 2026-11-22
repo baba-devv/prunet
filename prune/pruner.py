@@ -64,6 +64,11 @@ class Pruner:
     and the same number of masked connections is revived (highest
     `regrowth_score`), so the budget is unchanged. The fraction follows a
     cosine decay to zero at `end_step`: exploration early, a settled mask late.
+
+    A revived connection restarts at 0, so every magnitude-weighted score ranks
+    it last. `regrow_grace` is the number of following mask updates during
+    which it cannot be dropped, giving it time to train before it is judged
+    (0 = no protection).
     """
 
     def __init__(
@@ -77,6 +82,7 @@ class Pruner:
         interval: int = 100,
         scope: str = "global",
         regrow_fraction: float = 0.0,
+        regrow_grace: int = 1,
         batch_size: int = 128,
         stats_decay: Optional[float] = 0.99,
         seed: int = 0,
@@ -95,6 +101,7 @@ class Pruner:
         self.start_step, self.end_step, self.interval = start_step, end_step, interval
         self.scope = scope
         self.regrow_fraction = regrow_fraction
+        self.regrow_grace = regrow_grace
         self.rng = np.random.default_rng(seed)
         self.total = sum(p.size for p in self.params)
 
@@ -104,6 +111,8 @@ class Pruner:
         # Regrowth bookkeeping for the stability analysis.
         self.times_revived = [np.zeros(p.shape, dtype=np.int32) for p in self.params]
         self.times_pruned = [np.zeros(p.shape, dtype=np.int32) for p in self.params]
+        # Remaining mask updates during which a revived connection is protected from being dropped.
+        self.grace_left = [np.zeros(p.shape, dtype=np.int32) for p in self.params]
 
     # -------------------------------------------------------------- queries
 
@@ -159,9 +168,15 @@ class Pruner:
             size = sum(self.params[i].size for i in group)
             active = sum(int(new[i].sum()) for i in group)
 
+            def droppable() -> list:
+                """Active connections that may be removed: all but those still in their grace period
+                (unless honouring the grace period would make the budget unreachable)."""
+                unprotected = [new[i] & (self.grace_left[i] == 0) for i in group]
+                return unprotected if sum(int(u.sum()) for u in unprotected) >= needed else [new[i] for i in group]
+
             # 1. Prune the least important active connections down to the budget.
-            n_drop = active - self.budget(size, scheduled)
-            drop = select([scores[i] for i in group], [new[i] for i in group], n_drop, largest=False)
+            n_drop = needed = active - self.budget(size, scheduled)
+            drop = select([scores[i] for i in group], droppable(), n_drop, largest=False)
             for i, d in zip(group, drop):
                 new[i] &= ~d
                 removed_score += float(scores[i][d].sum())
@@ -170,8 +185,8 @@ class Pruner:
             #    Candidates are connections that were already masked before this update.
             if regrow_now > 0:
                 n_candidates = sum(int((~old[i]).sum()) for i in group)
-                k = min(int(regrow_now * (active - max(0, n_drop))), n_candidates)
-                extra = select([scores[i] for i in group], [new[i] for i in group], k, largest=False)
+                k = needed = min(int(regrow_now * (active - max(0, n_drop))), n_candidates)
+                extra = select([scores[i] for i in group], droppable(), k, largest=False)
                 grow = select(
                     [regrowth_score(self.stats[i]) for i in group], [~old[i] for i in group], k, largest=True
                 )
@@ -182,11 +197,15 @@ class Pruner:
                 n_regrown += k
 
         n_pruned = 0
-        for p, before, after, revived, pruned in zip(self.params, old, new, self.times_revived, self.times_pruned):
+        for index, (p, before, after) in enumerate(zip(self.params, old, new)):
             newly_pruned, newly_revived = before & ~after, ~before & after
             n_pruned += int(newly_pruned.sum())
-            pruned += newly_pruned
-            revived += newly_revived
+            self.times_pruned[index] += newly_pruned
+            self.times_revived[index] += newly_revived
+            grace = self.grace_left[index]
+            np.maximum(grace - 1, 0, out=grace)  # one update of protection used up
+            grace[newly_revived] = self.regrow_grace
+            grace[newly_pruned] = 0
             if newly_pruned.any() or newly_revived.any():
                 p.set_mask(after)  # zeroes pruned weights; revived ones restart from 0 with fresh optimizer state
 
