@@ -1,0 +1,3538 @@
+{
+ "runs": {
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.0, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.0,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.979,
+   "val_loss": 0.09348086395263672,
+   "weight_sparsity": 0.0,
+   "layer_sparsity": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.0, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.0,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9822,
+   "val_loss": 0.08787838439941406,
+   "weight_sparsity": 0.0,
+   "layer_sparsity": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.0, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.0,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9824,
+   "val_loss": 0.09621673889160157,
+   "weight_sparsity": 0.0,
+   "layer_sparsity": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.9, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.9,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9792,
+   "val_loss": 0.07603556518554687,
+   "weight_sparsity": 0.9000008519629226,
+   "layer_sparsity": [
+    0.9299117107780612,
+    0.729248046875,
+    0.58125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.035825252532958984,
+   "sum_probe_loss_jumps": 0.49136372327804567,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 23475
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.9, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.9,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9786,
+   "val_loss": 0.07907033996582032,
+   "weight_sparsity": 0.9000008519629226,
+   "layer_sparsity": [
+    0.9295230787627551,
+    0.73095703125,
+    0.5984375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.024238604545593262,
+   "sum_probe_loss_jumps": 0.48018005943298336,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 23475
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.9, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.9,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9794,
+   "val_loss": 0.07713877563476562,
+   "weight_sparsity": 0.9000008519629226,
+   "layer_sparsity": [
+    0.9296974649234694,
+    0.73052978515625,
+    0.58203125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.02796914577484131,
+   "sum_probe_loss_jumps": 0.46901051998138427,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 23475
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9768,
+   "val_loss": 0.07466179809570313,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9702696508290817,
+    0.836639404296875,
+    0.67421875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.057658419609069825,
+   "sum_probe_loss_jumps": 0.8784181280136109,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9794,
+   "val_loss": 0.07381993713378907,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9695820711096939,
+    0.840240478515625,
+    0.68984375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.09903008842468261,
+   "sum_probe_loss_jumps": 1.0486564092636108,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9778,
+   "val_loss": 0.06879189682006837,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9700753348214286,
+    0.837890625,
+    0.67265625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.06386502265930176,
+   "sum_probe_loss_jumps": 1.0567971448898315,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9688,
+   "val_loss": 0.09835522766113282,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9900201291454082,
+    0.92657470703125,
+    0.7765625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.16098930358886718,
+   "sum_probe_loss_jumps": 2.1461296157836913,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9702,
+   "val_loss": 0.09940428466796875,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9895916374362245,
+    0.929290771484375,
+    0.77421875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.14354942321777342,
+   "sum_probe_loss_jumps": 2.066683480262756,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9672,
+   "val_loss": 0.10319084930419922,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9898357780612245,
+    0.92742919921875,
+    0.78359375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.27019630050659177,
+   "sum_probe_loss_jumps": 2.79532026386261,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.9, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.9,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9766,
+   "val_loss": 0.08989198760986328,
+   "weight_sparsity": 0.9000008519629226,
+   "layer_sparsity": [
+    0.930305325255102,
+    0.741455078125,
+    0.20703125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.007587097167968751,
+   "sum_probe_loss_jumps": 0.12254829025268554,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 23475
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.9, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.9,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9782,
+   "val_loss": 0.094312158203125,
+   "weight_sparsity": 0.9000008519629226,
+   "layer_sparsity": [
+    0.9300811144770408,
+    0.74127197265625,
+    0.24687499999999996
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.009452518463134767,
+   "sum_probe_loss_jumps": 0.13994951343536377,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 23475
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.9, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.9,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.978,
+   "val_loss": 0.08750850830078125,
+   "weight_sparsity": 0.9000008519629226,
+   "layer_sparsity": [
+    0.9294882015306123,
+    0.745697021484375,
+    0.2265625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.006231481552124024,
+   "sum_probe_loss_jumps": 0.11173029088973999,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 23475
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9748,
+   "val_loss": 0.08584900817871094,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9669513313137755,
+    0.8709716796875,
+    0.31562500000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.011203751564025878,
+   "sum_probe_loss_jumps": 0.22867743253707884,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9748,
+   "val_loss": 0.08582520141601563,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9670360331632653,
+    0.869659423828125,
+    0.3359375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.010967277526855466,
+   "sum_probe_loss_jumps": 0.23399356937408447,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9746,
+   "val_loss": 0.08286877288818359,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9667221380739796,
+    0.871856689453125,
+    0.32890624999999996
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.015509199142456055,
+   "sum_probe_loss_jumps": 0.2222545204162598,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9656,
+   "val_loss": 0.10966339416503906,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9879474250637755,
+    0.950897216796875,
+    0.47890625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.026958984375,
+   "sum_probe_loss_jumps": 0.43533883285522457,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9654,
+   "val_loss": 0.11172180786132813,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9883510044642857,
+    0.9482421875,
+    0.48359375000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.02490238189697265,
+   "sum_probe_loss_jumps": 0.454089729309082,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9638,
+   "val_loss": 0.11903032836914063,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9879623724489796,
+    0.9495849609375,
+    0.51015625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.030645782470703126,
+   "sum_probe_loss_jumps": 0.4638797197341919,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"taylor1\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "taylor1",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9762,
+   "val_loss": 0.08179297180175782,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9643753985969388,
+    0.879913330078125,
+    0.490625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.023028964996337893,
+   "sum_probe_loss_jumps": 0.32807997512817383,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"taylor1\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "taylor1",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9744,
+   "val_loss": 0.08739781494140625,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9642458545918368,
+    0.879852294921875,
+    0.5125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.019988096237182618,
+   "sum_probe_loss_jumps": 0.35433144092559815,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"taylor1\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "taylor1",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9754,
+   "val_loss": 0.0825450454711914,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9642159598214286,
+    0.880828857421875,
+    0.4921875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.017848159790039057,
+   "sum_probe_loss_jumps": 0.30876956939697264,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"movement\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "movement",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.4282,
+   "val_loss": 1.73948720703125,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9529605787627551,
+    0.93048095703125,
+    0.9859375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 9.543229537963867,
+   "sum_probe_loss_jumps": 25.149528129577636,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"movement\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "movement",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.2422,
+   "val_loss": 2.05683662109375,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9509626116071429,
+    0.942535400390625,
+    0.990625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 9.543119895935058,
+   "sum_probe_loss_jumps": 25.720076454162598,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"movement\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "movement",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.4244,
+   "val_loss": 1.605157275390625,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9515854193239796,
+    0.939056396484375,
+    0.98203125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 9.569757049560547,
+   "sum_probe_loss_jumps": 23.433877868652342,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"taylor2\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "taylor2",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9562,
+   "val_loss": 0.14385595092773437,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9509526466836735,
+    0.95330810546875,
+    0.71640625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 4.355428756713867,
+   "sum_probe_loss_jumps": 11.410557647705078,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"taylor2\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "taylor2",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9564,
+   "val_loss": 0.13488929443359374,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.955825494260204,
+    0.924346923828125,
+    0.69375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 3.9126277084350587,
+   "sum_probe_loss_jumps": 11.861379364013672,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"taylor2\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "taylor2",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9434,
+   "val_loss": 0.2015258819580078,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9521733498086735,
+    0.944244384765625,
+    0.75703125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 4.9674342956542965,
+   "sum_probe_loss_jumps": 12.62099333190918,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"random\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "random",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9258,
+   "val_loss": 0.2670157958984375,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9502252072704082,
+    0.94891357421875,
+    0.94296875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.3378814697265625,
+   "sum_probe_loss_jumps": 4.100135669708252,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"random\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "random",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9228,
+   "val_loss": 0.27043353881835935,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9497767857142857,
+    0.951812744140625,
+    0.9390625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.48228111267089846,
+   "sum_probe_loss_jumps": 4.478654914855957,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"random\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "random",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9176,
+   "val_loss": 0.27759234619140627,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9502700494260204,
+    0.948699951171875,
+    0.94140625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.39232568359375,
+   "sum_probe_loss_jumps": 4.611291049957275,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"one_shot\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "one_shot",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9632,
+   "val_loss": 0.12077929077148437,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9715551259566326,
+    0.82611083984375,
+    0.7421875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 1.08609933501482,
+   "sum_probe_loss_jumps": 1.08609933501482,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"one_shot\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "one_shot",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9632,
+   "val_loss": 0.1251612060546875,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.971320950255102,
+    0.827423095703125,
+    0.7453125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 1.0678245023489,
+   "sum_probe_loss_jumps": 1.0678245023489,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"one_shot\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "one_shot",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9628,
+   "val_loss": 0.12104861450195313,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9714953364158163,
+    0.826507568359375,
+    0.74140625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 1.0521253544688225,
+   "sum_probe_loss_jumps": 1.0521253544688225,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"one_shot\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "one_shot",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9358,
+   "val_loss": 0.21280653686523437,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9767817283163265,
+    0.81353759765625,
+    0.24453124999999998
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 2.612743133842945,
+   "sum_probe_loss_jumps": 2.612743133842945,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"one_shot\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "one_shot",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9464,
+   "val_loss": 0.1956935546875,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9749133051658163,
+    0.82354736328125,
+    0.28125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 2.4447698148489,
+   "sum_probe_loss_jumps": 2.4447698148489,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"one_shot\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "one_shot",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9432,
+   "val_loss": 0.2023106689453125,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9744399713010204,
+    0.82623291015625,
+    0.28671875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 2.604328601539135,
+   "sum_probe_loss_jumps": 2.604328601539135,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"layer\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "layer",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9742,
+   "val_loss": 0.08385752868652344,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9500009964923469,
+    0.95001220703125,
+    0.95
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.20774206161499023,
+   "sum_probe_loss_jumps": 2.611625466346741,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"layer\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "layer",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9746,
+   "val_loss": 0.08305263824462891,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9500009964923469,
+    0.95001220703125,
+    0.95
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.193075345993042,
+   "sum_probe_loss_jumps": 2.258351724624634,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"layer\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "layer",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9736,
+   "val_loss": 0.08118197326660156,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9500009964923469,
+    0.95001220703125,
+    0.95
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.18039878463745115,
+   "sum_probe_loss_jumps": 2.4770738649368287,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"layer\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "layer",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9732,
+   "val_loss": 0.08638770294189453,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9500009964923469,
+    0.95001220703125,
+    0.95
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.08239802551269532,
+   "sum_probe_loss_jumps": 0.6676540870666504,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"layer\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "layer",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9726,
+   "val_loss": 0.09037785339355468,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9500009964923469,
+    0.95001220703125,
+    0.95
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.052776517868041994,
+   "sum_probe_loss_jumps": 0.7316777725219726,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"layer\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "layer",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9756,
+   "val_loss": 0.08398449096679687,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9500009964923469,
+    0.95001220703125,
+    0.95
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.04009906768798827,
+   "sum_probe_loss_jumps": 0.6622605419158936,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 0, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 0
+   },
+   "val_acc": 0.9756,
+   "val_loss": 0.08378951721191406,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9667271205357143,
+    0.872589111328125,
+    0.30937499999999996
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.010556507110595704,
+   "sum_probe_loss_jumps": 0.17532040309906005,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 148541,
+    "regrown_and_alive_at_end": 12,
+    "pruned_more_than_once": 148533,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 0, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 0
+   },
+   "val_acc": 0.9748,
+   "val_loss": 0.08759732360839843,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9669662786989796,
+    0.870147705078125,
+    0.334375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.009072152137756348,
+   "sum_probe_loss_jumps": 0.1758920564651489,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 147911,
+    "regrown_and_alive_at_end": 23,
+    "pruned_more_than_once": 147900,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 0, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 0
+   },
+   "val_acc": 0.9748,
+   "val_loss": 0.0876154052734375,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9667520328443877,
+    0.8720703125,
+    0.31875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.012093971252441403,
+   "sum_probe_loss_jumps": 0.19547179794311523,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 148160,
+    "regrown_and_alive_at_end": 21,
+    "pruned_more_than_once": 148148,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 0, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 0
+   },
+   "val_acc": 0.9662,
+   "val_loss": 0.10472982330322265,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9877182318239796,
+    0.952178955078125,
+    0.48203125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.023878684997558602,
+   "sum_probe_loss_jumps": 0.38493933486938475,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 148527,
+    "regrown_and_alive_at_end": 7,
+    "pruned_more_than_once": 148524,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 0, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 0
+   },
+   "val_acc": 0.9674,
+   "val_loss": 0.115231005859375,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9881417410714286,
+    0.94940185546875,
+    0.48671875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.021575111389160163,
+   "sum_probe_loss_jumps": 0.4024136505126953,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 148036,
+    "regrown_and_alive_at_end": 7,
+    "pruned_more_than_once": 148030,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 0, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 0
+   },
+   "val_acc": 0.9674,
+   "val_loss": 0.11021058197021484,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9880121970663265,
+    0.95062255859375,
+    0.47578125000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.024620727539062498,
+   "sum_probe_loss_jumps": 0.3866582565307617,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 147881,
+    "regrown_and_alive_at_end": 6,
+    "pruned_more_than_once": 147879,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.974,
+   "val_loss": 0.08106434020996094,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9676239636479592,
+    0.853485107421875,
+    0.6578125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.11424748039245605,
+   "sum_probe_loss_jumps": 1.101405294418335,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9772,
+   "val_loss": 0.07981676940917969,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9673200334821429,
+    0.8546142578125,
+    0.6765625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.07660007095336914,
+   "sum_probe_loss_jumps": 1.1177884731292724,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9752,
+   "val_loss": 0.08190877990722656,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9677634725765306,
+    0.85247802734375,
+    0.66171875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.10589427947998048,
+   "sum_probe_loss_jumps": 1.0603074235916137,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9638,
+   "val_loss": 0.12432779846191407,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9899055325255102,
+    0.9283447265625,
+    0.74921875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.23168262100219728,
+   "sum_probe_loss_jumps": 2.9155721473693847,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9634,
+   "val_loss": 0.12617745971679686,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9901795679209183,
+    0.9261474609375,
+    0.7625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.2046549949645996,
+   "sum_probe_loss_jumps": 2.607146146774292,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9598,
+   "val_loss": 0.1318883483886719,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9900350765306123,
+    0.92755126953125,
+    0.74921875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.1671116714477539,
+   "sum_probe_loss_jumps": 2.0175437374114993,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9716,
+   "val_loss": 0.09311393737792968,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9638671875,
+    0.89111328125,
+    0.28359375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.013567146301269532,
+   "sum_probe_loss_jumps": 0.203483003616333,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9732,
+   "val_loss": 0.08480790557861329,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9637177136479592,
+    0.8919677734375,
+    0.28515625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.016234773635864258,
+   "sum_probe_loss_jumps": 0.21045042228698732,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9732,
+   "val_loss": 0.08910449829101562,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9640316087372449,
+    0.8902587890625,
+    0.2796875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.011986709594726565,
+   "sum_probe_loss_jumps": 0.19232792472839355,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9674,
+   "val_loss": 0.11464754638671874,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9866918447066326,
+    0.95849609375,
+    0.48124999999999996
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.033442886352539065,
+   "sum_probe_loss_jumps": 0.4254803438186646,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.963,
+   "val_loss": 0.11490841064453125,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9869409677933674,
+    0.95703125,
+    0.47968750000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.02969988250732422,
+   "sum_probe_loss_jumps": 0.3973081874847412,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"unit\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.0, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "unit",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.0,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99,
+    "regrow_grace": 1
+   },
+   "val_acc": 0.9652,
+   "val_loss": 0.11394256439208984,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9868911431760204,
+    0.95794677734375,
+    0.46406250000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.03206362915039062,
+   "sum_probe_loss_jumps": 0.4350215549468994,
+   "regrowth": {
+    "regrow_events": 0,
+    "connections_ever_regrown": 0,
+    "regrown_and_alive_at_end": 0,
+    "pruned_more_than_once": 0,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 1,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9762,
+   "val_loss": 0.08552535705566407,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9664929448341837,
+    0.874359130859375,
+    0.30078125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.00863577938079834,
+   "sum_probe_loss_jumps": 0.19367942142486572,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 174465,
+    "regrown_and_alive_at_end": 33,
+    "pruned_more_than_once": 174451,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 1,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9762,
+   "val_loss": 0.08619126892089844,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9671057876275511,
+    0.87005615234375,
+    0.31484375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.012811042785644537,
+   "sum_probe_loss_jumps": 0.18440720558166504,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 173923,
+    "regrown_and_alive_at_end": 33,
+    "pruned_more_than_once": 173912,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 1,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9752,
+   "val_loss": 0.08603123931884765,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9662836814413265,
+    0.87469482421875,
+    0.32499999999999996
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.01266535949707031,
+   "sum_probe_loss_jumps": 0.19049050521850586,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 174349,
+    "regrown_and_alive_at_end": 27,
+    "pruned_more_than_once": 174340,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 1,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.969,
+   "val_loss": 0.10584337463378907,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9878128985969388,
+    0.9512939453125,
+    0.48984375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.029761945724487305,
+   "sum_probe_loss_jumps": 0.4293152179718017,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 175087,
+    "regrown_and_alive_at_end": 5,
+    "pruned_more_than_once": 175085,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 1,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9662,
+   "val_loss": 0.11126242980957031,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9880719866071429,
+    0.949798583984375,
+    0.48750000000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.027436355590820305,
+   "sum_probe_loss_jumps": 0.3996856679916382,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 174911,
+    "regrown_and_alive_at_end": 7,
+    "pruned_more_than_once": 174910,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 1, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 1,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9686,
+   "val_loss": 0.10858592376708984,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9878926179846939,
+    0.950347900390625,
+    0.5015625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.023281124114990233,
+   "sum_probe_loss_jumps": 0.41217411613464355,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 174472,
+    "regrown_and_alive_at_end": 8,
+    "pruned_more_than_once": 174470,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9762,
+   "val_loss": 0.08993895874023437,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9679179288903061,
+    0.867156982421875,
+    0.26171875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.10805403900146485,
+   "sum_probe_loss_jumps": 0.453381649017334,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 203107,
+    "regrown_and_alive_at_end": 352,
+    "pruned_more_than_once": 202975,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9768,
+   "val_loss": 0.09045470581054688,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9680723852040817,
+    0.86553955078125,
+    0.27890625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.1269677734375,
+   "sum_probe_loss_jumps": 0.4029682102203369,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 202537,
+    "regrown_and_alive_at_end": 376,
+    "pruned_more_than_once": 202404,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9738,
+   "val_loss": 0.08444170684814453,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9680524553571429,
+    0.866058349609375,
+    0.26875000000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.09455321884155275,
+   "sum_probe_loss_jumps": 0.3471834182739258,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 203131,
+    "regrown_and_alive_at_end": 350,
+    "pruned_more_than_once": 203016,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9692,
+   "val_loss": 0.10137973022460937,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9880968989158163,
+    0.950408935546875,
+    0.46796875000000004
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.10735410308837891,
+   "sum_probe_loss_jumps": 0.6360373439788819,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 202321,
+    "regrown_and_alive_at_end": 66,
+    "pruned_more_than_once": 202287,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9706,
+   "val_loss": 0.10452489318847656,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9880819515306123,
+    0.94964599609375,
+    0.48984375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.1006810989379883,
+   "sum_probe_loss_jumps": 0.531176134109497,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 203381,
+    "regrown_and_alive_at_end": 59,
+    "pruned_more_than_once": 203356,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"fisher\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "fisher",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.964,
+   "val_loss": 0.11134311370849609,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9880022321428571,
+    0.949676513671875,
+    0.5015625
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.10281977844238281,
+   "sum_probe_loss_jumps": 0.5197928848266601,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 202726,
+    "regrown_and_alive_at_end": 51,
+    "pruned_more_than_once": 202710,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9762,
+   "val_loss": 0.07376373901367188,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9688446667729592,
+    0.846954345703125,
+    0.63359375
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.13865339279174804,
+   "sum_probe_loss_jumps": 0.5669983291625976,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 190995,
+    "regrown_and_alive_at_end": 295,
+    "pruned_more_than_once": 190941,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9754,
+   "val_loss": 0.0778838134765625,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9688496492346939,
+    0.8468017578125,
+    0.63671875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.24538234710693357,
+   "sum_probe_loss_jumps": 0.7311224193572998,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 191286,
+    "regrown_and_alive_at_end": 263,
+    "pruned_more_than_once": 191246,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.95, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.95,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.9766,
+   "val_loss": 0.07101099319458008,
+   "weight_sparsity": 0.9500025558887677,
+   "layer_sparsity": [
+    0.9688994738520408,
+    0.84625244140625,
+    0.64296875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.1908552322387695,
+   "sum_probe_loss_jumps": 0.6535554943084716,
+   "regrowth": {
+    "regrow_events": 445065,
+    "connections_ever_regrown": 191427,
+    "regrown_and_alive_at_end": 289,
+    "pruned_more_than_once": 191361,
+    "final_active": 11737
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 0, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 0,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.97,
+   "val_loss": 0.09303129730224609,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9888243383290817,
+    0.933929443359375,
+    0.77578125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.17822811889648438,
+   "sum_probe_loss_jumps": 1.1272051029205323,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 189694,
+    "regrown_and_alive_at_end": 34,
+    "pruned_more_than_once": 189692,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 1, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 1,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.97,
+   "val_loss": 0.09901802062988281,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9887844786352041,
+    0.93438720703125,
+    0.7703125
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.2997815551757812,
+   "sum_probe_loss_jumps": 1.2199197406768798,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 189750,
+    "regrown_and_alive_at_end": 36,
+    "pruned_more_than_once": 189747,
+    "final_active": 4695
+   }
+  },
+  "{\"batch_size\": 128, \"criterion\": \"magnitude\", \"dataset\": \"mnist\", \"dtype\": \"float32\", \"epochs\": 20, \"hidden\": [256, 128], \"lr\": 0.001, \"lr_schedule\": \"cosine\", \"normalize\": \"standard\", \"prune_end\": 0.7, \"prune_interval\": 100, \"prune_start\": 0.1, \"regrow\": 0.2, \"regrow_grace\": 3, \"schedule\": \"cubic\", \"scope\": \"global\", \"seed\": 2, \"sparsity\": 0.98, \"stats_decay\": 0.99}": {
+   "config": {
+    "dataset": "mnist",
+    "hidden": [
+     256,
+     128
+    ],
+    "epochs": 20,
+    "batch_size": 128,
+    "lr": 0.001,
+    "lr_schedule": "cosine",
+    "seed": 2,
+    "dtype": "float32",
+    "normalize": "standard",
+    "sparsity": 0.98,
+    "criterion": "magnitude",
+    "schedule": "cubic",
+    "scope": "global",
+    "regrow": 0.2,
+    "regrow_grace": 3,
+    "prune_start": 0.1,
+    "prune_end": 0.7,
+    "prune_interval": 100,
+    "stats_decay": 0.99
+   },
+   "val_acc": 0.971,
+   "val_loss": 0.09133768615722657,
+   "weight_sparsity": 0.9800001703925845,
+   "layer_sparsity": [
+    0.9890186543367347,
+    0.93304443359375,
+    0.76796875
+   ],
+   "mask_updates": 53,
+   "largest_probe_loss_jump": 0.2341159896850586,
+   "sum_probe_loss_jumps": 1.223447067260742,
+   "regrowth": {
+    "regrow_events": 426171,
+    "connections_ever_regrown": 190192,
+    "regrown_and_alive_at_end": 33,
+    "pruned_more_than_once": 190190,
+    "final_active": 4695
+   }
+  }
+ }
+}
