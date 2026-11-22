@@ -9,15 +9,18 @@ from __future__ import annotations
 import math
 import platform
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Callable, Optional
 
 import numpy as np
 
+from infer.sparse import PrunedMLP, compact
 from nn import MLP, Adam
 from prune import Pruner
 
 from .data import load_dataset
-from .loop import evaluate, train
+from .loop import evaluate, predict, train
+from .stats import pack_bits
 
 
 @dataclass(frozen=True)
@@ -79,7 +82,12 @@ def prunable_weights(model: MLP) -> list:
     return [layer.weight for layer in model.linears]
 
 
-def run_experiment(config: ExperimentConfig, log: Optional[Callable[[str], None]] = print) -> dict:
+def run_experiment(
+    config: ExperimentConfig,
+    log: Optional[Callable[[str], None]] = print,
+    model_path: Optional[Path] = None,
+) -> dict:
+    """Train one model and describe it. With `model_path`, also save the trained (pruned) network."""
     data, model, optimizer, pruner, batch_rng, total_steps = setup_experiment(config)
     weights = prunable_weights(model)
     step_losses: list = []
@@ -96,6 +104,9 @@ def run_experiment(config: ExperimentConfig, log: Optional[Callable[[str], None]
         log=log,
     )
     test_loss, test_acc = evaluate(model, data.x_test, data.y_test)
+    test_correct = predict(model, data.x_test) == data.y_test
+    if abs(test_correct.mean() - test_acc) > 1e-12:
+        raise AssertionError("per-image predictions disagree with the evaluated accuracy")
 
     # Measure sparsity on what the forward pass actually uses, not on the pruner's bookkeeping.
     effective = [w.effective().data for w in weights]
@@ -121,9 +132,15 @@ def run_experiment(config: ExperimentConfig, log: Optional[Callable[[str], None]
         "steps_per_epoch": total_steps // config.epochs,
         "history": history,
         "val": {"loss": history[-1]["val_loss"], "acc": history[-1]["val_acc"]},
-        "test": {"loss": test_loss, "acc": test_acc},
+        # Per-image correctness on the test split, for paired comparisons between runs.
+        "test": {"loss": test_loss, "acc": test_acc, "correct_packed": pack_bits(test_correct)},
         "step_losses": [round(x, 5) for x in step_losses],
     }
+    # What an inference server would actually have to run.
+    net = PrunedMLP.from_model(model, meta={"config": asdict(config), "test_acc": test_acc})
+    result["structure"] = compact(net).report
+    if model_path is not None:
+        net.save(model_path)
     if pruner is not None:
         result["pruning"] = {"events": pruner.events, "regrowth": pruner.regrowth_summary()}
     return result

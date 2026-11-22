@@ -198,3 +198,29 @@ def test_mac_and_byte_accounting():
     assert small.report["nnz_before"] == net.nnz == 13
     assert dense.nbytes == 8 * (5 * 4 + 4 + 4 * 3 + 3 + 3 * 2 + 2)  # float64 in this test
     assert csr.nbytes == sum(m.nbytes for m in csr.matrices) + 8 * (1 + 1 + 2) + 3 * 4
+
+
+# --- end to end: a trained, saved, reloaded model ---------------------------------------------
+
+
+def test_saved_model_reproduces_the_experiments_test_predictions_on_every_path(tmp_path):
+    from train.data import load_dataset
+    from train.experiment import ExperimentConfig, run_experiment
+    from train.stats import unpack_bits
+
+    config = ExperimentConfig(
+        dataset="spirals", hidden=(32, 32), epochs=8, batch_size=64, lr=3e-3,
+        sparsity=0.8, criterion="fisher", prune_interval=10,
+    )  # fmt: skip
+    result = run_experiment(config, log=None, model_path=tmp_path / "model.npz")
+    net = PrunedMLP.load(tmp_path / "model.npz")
+    assert net.meta["config"]["sparsity"] == 0.8 and net.nnz == result["model"]["nonzero_weights"]
+    assert result["structure"] == compact(net).report
+
+    data = load_dataset("spirals")
+    expected = unpack_bits(result["test"]["correct_packed"], len(data.y_test))
+    assert expected.mean() == result["test"]["acc"]
+    small = compact(net)
+    for path in (DensePath(net), CompactDensePath(small), CSRPath(small)):
+        correct = path(data.x_test).argmax(axis=1) == data.y_test
+        np.testing.assert_array_equal(correct, expected)

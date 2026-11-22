@@ -12,8 +12,9 @@ import numpy as np
 from .experiment import ExperimentConfig, run_experiment
 
 
-def _run(config: ExperimentConfig) -> dict:
-    result = run_experiment(config, log=None)
+def _run(job: tuple) -> dict:
+    config, model_path = job
+    result = run_experiment(config, log=None, model_path=model_path)
     result.pop("step_losses")  # large, and not needed for sweep summaries
     return result
 
@@ -23,17 +24,22 @@ def run_all(
     workers: Optional[int] = None,
     label: str = "",
     on_result: Optional[Callable[[dict], None]] = None,
+    model_paths: Optional[list] = None,
 ) -> list:
     """Run every config; results come back in input order whatever the completion order.
 
     `on_result` is called with each result as soon as it is available (in input
-    order), e.g. to checkpoint a long sweep.
+    order), e.g. to checkpoint a long sweep. `model_paths`, parallel to
+    `configs`, names where to save each trained network (None = do not save).
     """
     configs = list(configs)
+    paths: list = list(model_paths) if model_paths is not None else [None] * len(configs)
+    if len(paths) != len(configs):
+        raise ValueError("model_paths must be parallel to configs")
     workers = workers or max(1, min(len(configs), (os.cpu_count() or 2) // 2))
     results = []
     with ProcessPoolExecutor(max_workers=workers) as pool:
-        for index, result in enumerate(pool.map(_run, configs), start=1):
+        for index, result in enumerate(pool.map(_run, list(zip(configs, paths))), start=1):
             c = result["config"]
             print(
                 f"[{label} {index}/{len(configs)}] {c['criterion'] if c['sparsity'] else 'dense':9s} "

@@ -35,6 +35,14 @@ def evaluate(model: Module, x: np.ndarray, y: np.ndarray, batch_size: int = 2000
     return total_loss / len(x), correct / len(x)
 
 
+def predict(model: Module, x: np.ndarray, batch_size: int = 2000) -> np.ndarray:
+    """Predicted class for every row of x, without building a graph."""
+    with no_grad():
+        return np.concatenate(
+            [model(x[start : start + batch_size]).data.argmax(axis=1) for start in range(0, len(x), batch_size)]
+        )
+
+
 def global_grad_norm(params) -> float:
     return float(np.sqrt(sum(float((p.grad * p.grad).sum()) for p in params if p.grad is not None)))
 
