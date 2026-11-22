@@ -10,15 +10,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import platform
 from pathlib import Path
 
-import numpy as np
-
-from nn import MLP, Adam
-
-from .data import load_dataset
-from .loop import LR_SCHEDULES, evaluate, train
+from .experiment import ExperimentConfig, run_experiment
+from .loop import LR_SCHEDULES
 
 DEFAULTS = {
     "mnist": {"hidden": [256, 128], "epochs": 12, "batch_size": 128, "lr": 1e-3},
@@ -26,52 +21,7 @@ DEFAULTS = {
 }
 
 
-def run(
-    dataset: str,
-    hidden,
-    epochs: int,
-    batch_size: int,
-    lr: float,
-    seed: int,
-    lr_schedule: str = "cosine",
-    dtype=np.float32,
-    log=print,
-) -> dict:
-    """Train one model; return config, per-epoch history and final test metrics."""
-    data = load_dataset(dataset, dtype=dtype)
-    # Independent streams: changing the architecture does not change the batch order.
-    init_seq, batch_seq = np.random.SeedSequence(seed).spawn(2)
-    model = MLP([data.num_features, *hidden, data.num_classes], np.random.default_rng(init_seq), dtype=dtype)
-    optimizer = Adam(model.parameters(), lr=lr)
-    history = train(
-        model, optimizer, data, epochs, batch_size, np.random.default_rng(batch_seq), lr_schedule=lr_schedule, log=log
-    )
-    test_loss, test_acc = evaluate(model, data.x_test, data.y_test)
-    return {
-        "config": {
-            "dataset": dataset,
-            "sizes": model.sizes,
-            "activation": model.activation,
-            "optimizer": "adam",
-            "lr": lr,
-            "lr_schedule": lr_schedule,
-            "batch_size": batch_size,
-            "epochs": epochs,
-            "seed": seed,
-            "dtype": np.dtype(dtype).name,
-            "num_parameters": int(sum(p.size for p in model.parameters())),
-            "train_examples": len(data.x_train),
-            "val_examples": len(data.x_val),
-            "test_examples": len(data.x_test),
-        },
-        "environment": {"python": platform.python_version(), "numpy": np.__version__, "machine": platform.machine()},
-        "history": history,
-        "test": {"loss": test_loss, "acc": test_acc},
-    }
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+def add_training_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dataset", choices=sorted(DEFAULTS), default="mnist")
     parser.add_argument("--hidden", type=int, nargs="+", help="hidden layer widths")
     parser.add_argument("--epochs", type=int)
@@ -80,31 +30,47 @@ def main() -> None:
     parser.add_argument("--lr-schedule", choices=sorted(LR_SCHEDULES), default="cosine")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--dtype", choices=["float32", "float64"], default="float32")
+    parser.add_argument("--normalize", choices=["standard", "unit"], default="standard")
+
+
+def training_settings(args: argparse.Namespace, defaults: dict) -> dict:
+    """Explicit command-line values override the per-dataset defaults."""
+    settings = dict(defaults[args.dataset])
+    for key in settings:
+        if getattr(args, key, None) is not None:
+            settings[key] = getattr(args, key)
+    settings["hidden"] = tuple(settings["hidden"])
+    settings.update(
+        dataset=args.dataset, lr_schedule=args.lr_schedule, seed=args.seed, dtype=args.dtype, normalize=args.normalize
+    )
+    return settings
+
+
+def describe(result: dict) -> str:
+    c = result["config"]
+    return (
+        f"{c['dataset'].upper()} MLP {'-'.join(map(str, result['model']['sizes']))}, Adam lr={c['lr']:g} "
+        f"({c['lr_schedule']}), batch {c['batch_size']}, seed {c['seed']}"
+    )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    add_training_arguments(parser)
     parser.add_argument("--out", type=Path, default=Path("results/part2"))
     args = parser.parse_args()
 
-    settings = dict(DEFAULTS[args.dataset])
-    for key in settings:
-        if getattr(args, key) is not None:
-            settings[key] = getattr(args, key)
-
-    result = run(
-        args.dataset, seed=args.seed, lr_schedule=args.lr_schedule, dtype=np.dtype(args.dtype).type, **settings
-    )
+    result = run_experiment(ExperimentConfig(**training_settings(args, DEFAULTS)))
     print(f"test loss {result['test']['loss']:.4f}  test acc {result['test']['acc']:.4f}")
 
     args.out.mkdir(parents=True, exist_ok=True)
     history_path = args.out / f"{args.dataset}_history.json"
-    history_path.write_text(json.dumps(result, indent=2) + "\n")
+    history_path.write_text(json.dumps(result, indent=1) + "\n")
 
     from .plots import plot_learning_curves
 
-    config = result["config"]
-    title = (
-        f"{args.dataset.upper()} MLP {'-'.join(map(str, config['sizes']))}, Adam lr={config['lr']:g} "
-        f"({config['lr_schedule']}), batch {config['batch_size']}, seed {config['seed']}  ·  test accuracy {100 * result['test']['acc']:.2f}%"
-    )
     curve_path = args.out / f"{args.dataset}_learning_curve.png"
+    title = f"{describe(result)}  ·  test accuracy {100 * result['test']['acc']:.2f}%"
     plot_learning_curves(result["history"], curve_path, title)
     print(f"wrote {history_path} and {curve_path}")
 

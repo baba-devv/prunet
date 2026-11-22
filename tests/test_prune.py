@@ -6,8 +6,9 @@ import numpy as np
 import pytest
 
 from engine import Parameter, Tensor, softmax_cross_entropy
-from nn import Adam
+from nn import MLP, Adam
 from prune import CRITERIA, GradStats, Pruner, cubic, dense_gradient, linear, one_shot, regrowth_score, select
+from train.experiment import ExperimentConfig, run_experiment
 
 
 def rng(seed=0):
@@ -350,3 +351,67 @@ def test_regrowth_fraction_decays_to_zero_so_the_last_update_only_prunes():
     assert regrown[0] == 0 and max(regrown) > 0 and regrown[-1] == 0
     assert pruner.num_active == Pruner.budget(250, 0.8)
     assert all(on_budget(event) for event in pruner.events)  # the budget holds at every update, swaps included
+
+
+# --- end to end -------------------------------------------------------------------
+
+SPIRALS = dict(dataset="spirals", hidden=(64, 64), epochs=120, batch_size=64, lr=3e-3, prune_interval=20)
+
+
+@pytest.mark.parametrize("criterion, regrow", [("magnitude", 0.0), ("fisher", 0.0), ("fisher", 0.2)])
+def test_self_pruning_run_hits_the_budget_with_true_zeros_and_keeps_accuracy(criterion, regrow):
+    result = run_experiment(ExperimentConfig(sparsity=0.8, criterion=criterion, regrow=regrow, **SPIRALS), log=None)
+    model = result["model"]
+    assert model["nonzero_weights"] <= (1 - 0.8) * model["num_weights"]
+    assert model["weight_sparsity"] == pytest.approx(0.8, abs=1e-3)
+    assert model["stored_zeros_match_mask"]
+    assert result["val"]["acc"] > 0.95 and result["test"]["acc"] > 0.95
+    history = result["history"]
+    assert [h["sparsity"] for h in history] == sorted(h["sparsity"] for h in history)
+    assert history[0]["sparsity"] == 0.0 and history[-1]["sparsity"] == pytest.approx(0.8, abs=1e-3)
+    assert np.isfinite([h["val_loss"] for h in history]).all()
+    events = result["pruning"]["events"]
+    assert all("probe_loss_before" in e and "probe_loss_after" in e for e in events)
+    assert (result["pruning"]["regrowth"]["regrow_events"] > 0) == (regrow > 0)
+
+
+def test_masks_and_optimizer_state_stay_consistent_at_every_step_of_a_pruning_run():
+    r = rng()
+    x, y = r.standard_normal((256, 8)), r.integers(0, 3, size=256)
+    model = MLP([8, 32, 3], r)
+    weights = [layer.weight for layer in model.linears]
+    opt = Adam(model.parameters(), lr=1e-2)
+    pruner = Pruner(weights, "fisher", 0.9, start_step=10, end_step=150, interval=10, regrow_fraction=0.3, batch_size=64)
+    for step in range(200):
+        if pruner.is_update_step(step):
+            pruner.update(step)
+        opt.zero_grad()
+        batch = r.integers(0, 256, size=64)
+        loss = softmax_cross_entropy(model(x[batch]), y[batch])
+        loss.backward()
+        pruner.after_backward()
+        for w in weights:
+            if w.mask is not None:
+                assert (w.grad[~w.mask] == 0).all()  # this step's gradients belong to this step's mask
+        opt.step()
+        for w in weights:
+            if w.mask is not None:
+                index = opt.params.index(w)
+                assert (w.data[~w.mask] == 0).all()
+                assert (opt.m[index][~w.mask] == 0).all() and (opt.v[index][~w.mask] == 0).all()
+        assert math.isfinite(loss.item())
+    assert pruner.num_active == Pruner.budget(sum(w.size for w in weights), 0.9)
+    assert pruner.regrowth_summary()["regrow_events"] > 0
+
+
+def test_pruning_runs_are_reproducible_and_dense_runs_ignore_pruning_options():
+    config = ExperimentConfig(sparsity=0.7, criterion="fisher", regrow=0.2, **dict(SPIRALS, epochs=10))
+    a, b = run_experiment(config, log=None), run_experiment(config, log=None)
+    assert a["test"] == b["test"] and a["model"]["layer_nonzero"] == b["model"]["layer_nonzero"]
+    assert [e["removed_score"] for e in a["pruning"]["events"]] == [e["removed_score"] for e in b["pruning"]["events"]]
+
+    dense = dict(SPIRALS, epochs=5)
+    plain = run_experiment(ExperimentConfig(**dense), log=None)
+    other = run_experiment(ExperimentConfig(criterion="magnitude", regrow=0.5, **dense), log=None)
+    assert plain["test"] == other["test"] and "pruning" not in plain
+    assert plain["model"]["weight_sparsity"] == 0.0

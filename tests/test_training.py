@@ -8,8 +8,8 @@ import pytest
 from engine import softmax_cross_entropy
 from nn import MLP, SGD, Adam
 from train.data import load_dataset
+from train.experiment import ExperimentConfig, run_experiment
 from train.loop import LR_SCHEDULES, evaluate, iterate_minibatches, train
-from train.train_mlp import run
 
 
 def strip_timing(history):
@@ -52,7 +52,8 @@ def test_an_mlp_can_memorise_a_small_random_batch():
 
 
 def test_training_on_spirals_learns_a_nonlinear_boundary_and_stays_finite():
-    result = run("spirals", hidden=[64, 64], epochs=60, batch_size=64, lr=3e-3, seed=0, log=None)
+    config = ExperimentConfig(dataset="spirals", hidden=(64, 64), epochs=60, batch_size=64, lr=3e-3, seed=0)
+    result = run_experiment(config, log=None)
     history = result["history"]
     assert len(history) == 61 and history[0]["epoch"] == 0
     # untrained: chance accuracy and a loss near ln(3)
@@ -67,14 +68,15 @@ def test_training_on_spirals_learns_a_nonlinear_boundary_and_stays_finite():
 
 
 def test_runs_are_reproducible_from_the_seed():
-    settings = dict(hidden=[16], epochs=3, batch_size=64, lr=3e-3, log=None)
-    first, second = run("spirals", seed=1, **settings), run("spirals", seed=1, **settings)
-    other = run("spirals", seed=2, **settings)
+    settings = dict(dataset="spirals", hidden=(16,), epochs=3, batch_size=64, lr=3e-3)
+    first = run_experiment(ExperimentConfig(seed=1, **settings), log=None)
+    second = run_experiment(ExperimentConfig(seed=1, **settings), log=None)
+    other = run_experiment(ExperimentConfig(seed=2, **settings), log=None)
     assert strip_timing(first["history"]) == strip_timing(second["history"])
     assert first["test"] == second["test"]
     assert strip_timing(first["history"]) != strip_timing(other["history"])
     # the data split is fixed; only initialisation and batch order depend on the run seed
-    assert first["config"]["train_examples"] == other["config"]["train_examples"]
+    assert first["data"] == other["data"] == {"train": 1200, "val": 300, "test": 300}
 
 
 def test_a_diverging_run_raises_instead_of_training_on_nans():

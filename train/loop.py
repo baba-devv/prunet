@@ -10,6 +10,7 @@ import numpy as np
 
 from engine import no_grad, softmax_cross_entropy
 from nn import Module, Optimizer
+from prune import Pruner
 
 from .data import Dataset
 
@@ -38,6 +39,8 @@ def global_grad_norm(params) -> float:
     return float(np.sqrt(sum(float((p.grad * p.grad).sum()) for p in params if p.grad is not None)))
 
 
+PROBE_SIZE = 2000  # training examples used to measure the immediate effect of a mask update
+
 # Learning-rate multiplier as a function of training progress in [0, 1).
 LR_SCHEDULES = {
     "constant": lambda progress: 1.0,
@@ -54,6 +57,8 @@ def train(
     batch_size: int,
     rng: np.random.Generator,
     lr_schedule: str = "constant",
+    pruner: Optional[Pruner] = None,
+    step_losses: Optional[list] = None,
     log: Optional[Callable[[str], None]] = print,
 ) -> list:
     """Train with mini-batches; return one record per epoch (epoch 0 = before training).
@@ -61,12 +66,18 @@ def train(
     `optimizer.lr` at call time is the base rate, scaled per step by `lr_schedule`.
     Train and validation metrics are measured with the same end-of-epoch weights.
     NumPy overflow / invalid / divide errors raise, and a non-finite loss aborts.
+
+    With a `pruner`, masks are updated before the forward pass of an update step,
+    and each update is bracketed by two evaluations on a fixed probe set to
+    measure its immediate loss damage. If `step_losses` is given, every
+    mini-batch loss is appended to it.
     """
     params = model.parameters()
     history = []
     schedule = LR_SCHEDULES[lr_schedule]
     base_lr = optimizer.lr
     total_steps = epochs * math.ceil(len(data.x_train) / batch_size)
+    probe_x, probe_y = data.x_train[:PROBE_SIZE], data.y_train[:PROBE_SIZE]
 
     def record(epoch: int, grad_norms: list, seconds: float) -> None:
         train_loss, train_acc = evaluate(model, data.x_train, data.y_train)
@@ -80,13 +91,16 @@ def train(
             "grad_norm_mean": float(np.mean(grad_norms)) if grad_norms else None,
             "grad_norm_max": float(np.max(grad_norms)) if grad_norms else None,
             "lr": optimizer.lr,
+            "sparsity": pruner.sparsity if pruner is not None else 0.0,
             "seconds": seconds,
         }
         history.append(entry)
         if log is not None:
             log(
                 f"epoch {epoch:3d}  train loss {train_loss:.4f} acc {train_acc:.4f}"
-                f"  |  val loss {val_loss:.4f} acc {val_acc:.4f}  ({seconds:.1f}s)"
+                f"  |  val loss {val_loss:.4f} acc {val_acc:.4f}"
+                + (f"  |  sparsity {pruner.sparsity:.4f}" if pruner is not None else "")
+                + f"  ({seconds:.1f}s)"
             )
 
     with np.errstate(over="raise", invalid="raise", divide="raise"):
@@ -97,11 +111,20 @@ def train(
             grad_norms = []
             for xb, yb in iterate_minibatches(data.x_train, data.y_train, batch_size, rng):
                 optimizer.lr = base_lr * schedule(step / total_steps)
+                if pruner is not None and pruner.is_update_step(step):
+                    loss_before = evaluate(model, probe_x, probe_y)[0]
+                    event = pruner.update(step)
+                    event["probe_loss_before"] = loss_before
+                    event["probe_loss_after"] = evaluate(model, probe_x, probe_y)[0]
                 optimizer.zero_grad()
                 loss = softmax_cross_entropy(model(xb), yb)
                 if not np.isfinite(loss.data):
                     raise FloatingPointError(f"non-finite loss {loss.item()} at step {step} (epoch {epoch})")
                 loss.backward()
+                if pruner is not None:
+                    pruner.after_backward()
+                if step_losses is not None:
+                    step_losses.append(loss.item())
                 grad_norms.append(global_grad_norm(params))
                 optimizer.step()
                 step += 1

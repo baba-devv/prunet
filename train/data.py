@@ -150,7 +150,17 @@ def _split(x: np.ndarray, y: np.ndarray, n_holdout: int, rng: np.random.Generato
     return x[keep], y[keep], x[held], y[held]
 
 
-def load_dataset(name: str, dtype=np.float32, root: Path = Path("data")) -> Dataset:
+def load_dataset(name: str, dtype=np.float32, root: Path = Path("data"), normalize: str = "standard") -> Dataset:
+    """Load a dataset with a fixed train/validation/test split.
+
+    normalize="standard": subtract the training mean, divide by the training std (default).
+    normalize="unit":     leave the raw scale (MNIST pixels in [0, 1]). An input that is
+                          always 0 then stays exactly 0, so its weights get zero gradient;
+                          with "standard" it becomes a non-zero constant, which changes what
+                          gradient-based pruning criteria can see.
+    """
+    if normalize not in ("standard", "unit"):
+        raise ValueError(f"unknown normalize mode {normalize!r} (expected 'standard' or 'unit')")
     split_rng = np.random.default_rng(SPLIT_SEED)
     if name == "mnist":
         train_x, train_y, test_x, test_y = load_mnist_arrays(root / "mnist")
@@ -162,5 +172,8 @@ def load_dataset(name: str, dtype=np.float32, root: Path = Path("data")) -> Data
         train_x, train_y, val_x, val_y = _split(x, y, 300, split_rng)
     else:
         raise ValueError(f"unknown dataset {name!r} (expected 'mnist' or 'spirals')")
-    train_x, val_x, test_x = _standardise(train_x, val_x, test_x, dtype=dtype)
+    if normalize == "standard":
+        train_x, val_x, test_x = _standardise(train_x, val_x, test_x, dtype=dtype)
+    else:
+        train_x, val_x, test_x = (a.astype(dtype) for a in (train_x, val_x, test_x))
     return Dataset(name, train_x, train_y, val_x, val_y, test_x, test_y)
