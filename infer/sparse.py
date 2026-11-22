@@ -12,8 +12,12 @@ they actually do:
   contain zeros.
 * `CSRPath`: a sparse matrix product (compressed sparse rows, `CSRMatrix`)
   on the compacted network. Only surviving weights are multiplied.
+* `AlignedDensePath`: the compacted network reshaped for the BLAS. It keeps
+  the first layer's full input width (gathering the surviving input columns
+  cost more than multiplying the dead ones) and zero-pads hidden widths to a
+  multiple of 32 (a 256x123 product took twice as long as 256x128).
 
-All three give the same outputs up to floating-point rounding. Only ReLU
+All paths give the same outputs up to floating-point rounding. Only ReLU
 networks are supported, because compaction needs the activation's value at a
 constant input.
 
@@ -284,6 +288,36 @@ class CompactDensePath:
         if not self.all_inputs:
             x = x[:, self.net.input_index]
         return relu_mlp_forward(x, self.net.weights, self.net.biases)
+
+
+class AlignedDensePath:
+    """Compacted hidden layers, full-width input, hidden widths zero-padded to `multiple`.
+
+    Padding adds zero rows and columns only, so the function is unchanged:
+    a padded unit has zero weights in and out and a zero bias, outputs relu(0) = 0,
+    and is multiplied by zero downstream.
+    """
+
+    name = "compact_aligned"
+
+    def __init__(self, net: CompactMLP, multiple: int = 32):
+        n_inputs = net.report["original_sizes"][0]
+        widths = [n_inputs] + [-(-w.shape[1] // multiple) * multiple for w in net.weights[:-1]] + [net.weights[-1].shape[1]]
+        weights, biases = [], []
+        for i, (w, b) in enumerate(zip(net.weights, net.biases)):
+            padded = np.zeros((widths[i], widths[i + 1]), dtype=w.dtype)
+            rows = net.input_index if i == 0 else np.arange(w.shape[0])
+            padded[rows, : w.shape[1]] = w
+            bias = np.zeros(widths[i + 1], dtype=b.dtype)
+            bias[: b.shape[0]] = b
+            weights.append(padded)
+            biases.append(bias)
+        self.weights, self.biases, self.widths = weights, biases, widths
+        self.macs = int(sum(w.size for w in weights))
+        self.nbytes = int(sum(w.nbytes + b.nbytes for w, b in zip(weights, biases)))
+
+    def __call__(self, x: np.ndarray) -> np.ndarray:
+        return relu_mlp_forward(x, self.weights, self.biases)
 
 
 class CSRPath:

@@ -6,6 +6,7 @@ from dataclasses import replace
 import numpy as np
 import pytest
 
+from infer.sparse import PrunedMLP
 from train.experiment import ExperimentConfig
 from train.pareto import BASE, PRIMARY_SPARSITY, SEEDS, SPARSITIES, plan, sweep, verdict
 
@@ -44,6 +45,8 @@ def test_sweep_writes_every_artifact(small_sweep):
         assert (out / name).exists()
     models = sorted(p.name for p in (out / "models").iterdir())
     assert models == ["dense.npz", "fisher_s50.npz", "fisher_s90.npz", "magnitude_s50.npz", "magnitude_s90.npz"]
+    for name in models:  # every saved network comes from the designated seed, not whichever run finished last
+        assert PrunedMLP.load(out / "models" / name).meta["config"]["seed"] == 1
     assert len(json.loads((out / "runs.json").read_text())["runs"]) == 2 * (1 + 2 * 2)
     assert analysis["h1"] is None  # 95% was not in this small sweep
     assert "SPIRALS 2-32-32-3" in (out / "pareto.md").read_text()

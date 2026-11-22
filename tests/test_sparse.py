@@ -5,6 +5,7 @@ import pytest
 
 from engine import Tensor
 from infer.sparse import (
+    AlignedDensePath,
     CompactDensePath,
     CSRMatrix,
     CSRPath,
@@ -156,7 +157,7 @@ def test_compaction_is_exact_on_random_sparse_networks(density):
     small = compact(net)
     x = rng(8).standard_normal((64, 60))
     reference = net.forward(x)
-    for path in (DensePath(net), CompactDensePath(small), CSRPath(small)):
+    for path in (DensePath(net), CompactDensePath(small), AlignedDensePath(small), CSRPath(small)):
         np.testing.assert_allclose(path(x), reference, rtol=1e-10, atol=1e-10)
     assert small.report["compact_sizes"][-1] == 10  # outputs are never removed
     for w, m in zip(small.weights, small.masks):  # every surviving unit has an input and an output
@@ -224,3 +225,61 @@ def test_saved_model_reproduces_the_experiments_test_predictions_on_every_path(t
     for path in (DensePath(net), CompactDensePath(small), CSRPath(small)):
         correct = path(data.x_test).argmax(axis=1) == data.y_test
         np.testing.assert_array_equal(correct, expected)
+
+
+# --- the cost benchmark ---------------------------------------------------------------------
+
+
+def test_benchmark_measures_every_path_and_checks_agreement():
+    from infer.benchmark import measure_model, time_call
+
+    timing = time_call(lambda x: x @ x.T, np.ones((8, 8)), min_seconds=0.001, repeats=3)
+    assert 0 < timing["min"] <= timing["median"] <= timing["max"] and timing["loops"] >= 1
+
+    net = random_net([30, 20, 10, 4], 0.1, seed=12, dtype=np.float32)
+    net.meta = {"config": {"criterion": "fisher"}, "test_acc": None}
+    x = rng(13).standard_normal((50, 30)).astype(np.float32)
+    y = rng(14).integers(0, 4, size=50)
+    result = measure_model(net, x, y, batch_sizes=(1, 4), min_seconds=0.001)
+    assert [r["path"] for r in result["paths"]] == ["dense", "compact_dense", "compact_aligned", "csr"]
+    assert result["criterion"] == "fisher" and result["nonzero_weights"] == net.nnz
+    for row in result["paths"]:
+        assert row["predictions_differing_from_dense"] == 0 and row["max_abs_logit_difference"] < 1e-4
+        assert set(row["seconds_per_batch"]) == {"1", "4"}
+    macs = {r["path"]: r["macs_per_example"] for r in result["paths"]}
+    assert macs["dense"] == 30 * 20 + 20 * 10 + 10 * 4
+    assert macs["dense"] >= macs["compact_dense"] >= macs["csr"]
+
+    unpruned = random_net([6, 5, 3], 1.0, seed=15, dtype=np.float32)
+    only = measure_model(unpruned, x[:, :6], y, batch_sizes=(1,), min_seconds=0.001)
+    assert only["criterion"] == "dense" and [r["path"] for r in only["paths"]] == ["dense"]
+
+
+def test_aligned_path_keeps_all_inputs_pads_hidden_widths_and_is_exact():
+    net = handmade_net()
+    small = compact(net)
+    aligned = AlignedDensePath(small, multiple=4)
+    assert aligned.widths == [5, 4, 4, 2]  # inputs kept at 5; hidden 1 -> 4 and 1 -> 4; outputs untouched
+    x = rng(16).standard_normal((30, 5))
+    np.testing.assert_allclose(aligned(x), net.forward(x), rtol=1e-12, atol=1e-12)
+    assert aligned.macs == 5 * 4 + 4 * 4 + 4 * 2
+
+    big = random_net([70, 50, 33, 10], 0.05, seed=17)
+    path = AlignedDensePath(compact(big))
+    assert path.widths[0] == 70 and all(w % 32 == 0 for w in path.widths[1:-1]) and path.widths[-1] == 10
+    x = rng(18).standard_normal((20, 70))
+    np.testing.assert_allclose(path(x), big.forward(x), rtol=1e-10, atol=1e-10)
+
+
+def test_shape_diagnostic_reports_every_compacted_layer():
+    from infer.benchmark import shape_diagnostic
+
+    net = random_net([40, 30, 20, 4], 0.08, seed=19, dtype=np.float32)
+    x = rng(20).standard_normal((16, 40)).astype(np.float32)
+    d = shape_diagnostic(net, x, batch=8, multiple=16, min_seconds=0.001)
+    small = compact(net)
+    assert d["compact_sizes"] == small.report["compact_sizes"] and len(d["layers"]) == 3
+    for layer, w in zip(d["layers"], small.weights):
+        assert layer["shape"] == list(w.shape) and layer["padded_shape"][0] % 16 == 0
+        assert layer["seconds"] > 0 and layer["padded_seconds"] > 0
+    assert d["layers"][-1]["padded_shape"][1] == 4  # the output layer is never padded

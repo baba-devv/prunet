@@ -134,6 +134,10 @@ def analyse(records: list, seeds, sparsities, primary: float = PRIMARY_SPARSITY,
         runs = {c: [by[(c, sparsity, s)] for s in seeds] for c in CRITERIA}
         diffs = [100 * (m["test_acc"] - f["test_acc"]) for m, f in zip(runs["magnitude"], runs["fisher"])]
         correct = {c: np.stack([unpack_bits(r["test_correct_packed"], n_test) for r in runs[c]]) for c in CRITERIA}
+        # The run-level accuracies and the per-image flags must describe the same comparison.
+        from_flags = 100 * (correct["magnitude"].mean() - correct["fisher"].mean())
+        if abs(np.mean(diffs) - from_flags) > 1e-9:
+            raise AssertionError(f"paired differences ({np.mean(diffs)}) disagree with per-image results ({from_flags})")
         low, high = two_level_bootstrap_ci(correct["magnitude"], correct["fisher"], n_boot=n_boot)
         seed_low, seed_high = bootstrap_mean_ci(diffs, n_boot=n_boot)
         levels.append(

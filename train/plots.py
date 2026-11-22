@@ -266,8 +266,8 @@ def plot_pareto(analysis: dict, path: Path) -> None:
 
     # 3. accuracy vs what the network costs once dead units are removed
     ax_cost.scatter([total], [dense["test_mean"]], s=40, color=NEUTRAL, zorder=3)
-    ax_cost.annotate("dense", xy=(total, dense["test_mean"]), xytext=(-6, 6), textcoords="offset points",
-                     ha="right", fontsize=8, color=TEXT_SECONDARY)
+    ax_cost.annotate("dense", xy=(total, dense["test_mean"]), xytext=(8, 4), textcoords="offset points",
+                     ha="left", fontsize=8, color=TEXT_SECONDARY)
     for c in criteria:
         macs = [np.mean(lv[c]["compact_dense_macs"]) for lv in levels]
         means = [lv[c]["test_mean"] for lv in levels]
@@ -280,6 +280,12 @@ def plot_pareto(analysis: dict, path: Path) -> None:
                                  textcoords="offset points", fontsize=7.5, color=CRITERION_COLORS[c])
     ax_cost.set_xscale("log")
     ax_cost.invert_xaxis()
+    ticks = [t for t in (300_000, 200_000, 100_000, 50_000, 20_000, 10_000, 5_000, 2_000)
+             if min(min(lv[c]["compact_dense_macs"]) for lv in levels for c in criteria) / 1.5 <= t <= total * 1.5]
+    ax_cost.set_xticks(ticks)
+    ax_cost.set_xticklabels([f"{t // 1000}k" for t in ticks])
+    ax_cost.xaxis.set_minor_formatter(NullFormatter())
+    ax_cost.tick_params(which="minor", length=0)
     _style(ax_cost, "Accuracy vs work after removing dead units", "test accuracy (%)")
     ax_cost.set_xlabel("dense multiply-accumulates per example after compaction (log)", color=TEXT_SECONDARY, fontsize=9)
     ax_cost.legend(frameon=False, fontsize=9, labelcolor=TEXT_SECONDARY, loc="lower left")
@@ -292,6 +298,62 @@ def plot_pareto(analysis: dict, path: Path) -> None:
         x=0.01, ha="left", fontsize=12, color=TEXT, fontweight="bold",
     )
     fig.tight_layout(rect=(0, 0, 1, 0.94))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(path, dpi=160, facecolor=SURFACE)
+    plt.close(fig)
+
+
+def plot_cost(report: dict, path: Path) -> None:
+    """Work per example and measured time per path, against sparsity, for both criteria."""
+    import numpy as np
+
+    models = report["models"]
+    unpruned = next(m for m in models if m["criterion"] == "dense")["paths"][0]
+    pruned = [m for m in models if m["criterion"] != "dense"]
+    levels = sorted({round(m["sparsity"], 4) for m in pruned})
+    x = np.arange(len(levels))
+    names = {"magnitude": "magnitude", "fisher": "Fisher"}
+    styles = {"compact_dense": ("-", "o", "compact dense"), "compact_aligned": ("-.", "^", "compact aligned"), "csr": ("--", "s", "CSR")}
+
+    def value(row, panel):
+        if panel == "macs":
+            return row["macs_per_example"]
+        batch = "1" if panel == "b1" else "256"
+        seconds = row["seconds_per_batch"][batch]["median"]
+        return 1e6 * seconds if panel == "b1" else 1e6 * seconds / 256
+
+    panels = (
+        ("macs", "Work: multiply-accumulates per example", "MACs per example (log)"),
+        ("b1", "Latency, batch of 1, one core", "µs per batch (log)"),
+        ("b256", "Throughput, batch of 256, one core", "µs per example (log)"),
+    )
+    fig, axes = plt.subplots(1, 3, figsize=(16, 4.9), facecolor=SURFACE)
+    for ax, (panel, title, ylabel) in zip(axes, panels):
+        reference = value(unpruned, panel)
+        ax.axhline(reference, color=NEUTRAL, linewidth=1.4, linestyle=":", label="unpruned, dense")
+        zeros = [value(next(r for r in m["paths"] if r["path"] == "dense"), panel) for m in pruned if m["criterion"] == "magnitude"]
+        ax.scatter(x, zeros, marker="x", s=28, color=NEUTRAL, zorder=3, label="pruned, dense-times-zero")
+        for criterion in ("magnitude", "fisher"):
+            by_level = {round(m["sparsity"], 4): m for m in pruned if m["criterion"] == criterion}
+            for path_name, (linestyle, marker, path_label) in styles.items():
+                ys = [value(next(r for r in by_level[s]["paths"] if r["path"] == path_name), panel) for s in levels]
+                ax.plot(x, ys, color=CRITERION_COLORS[criterion], linestyle=linestyle, marker=marker, markersize=4.5,
+                        linewidth=1.8, label=f"{names[criterion]}, {path_label}")
+        ax.set_yscale("log")
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"{100 * s:.0f}%" for s in levels])
+        _style(ax, title, ylabel)
+        ax.set_xlabel("sparsity", color=TEXT_SECONDARY, fontsize=9)
+        ax.grid(axis="y", which="minor", visible=False)
+        ax.tick_params(which="minor", length=0)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=4, frameon=False, fontsize=9, labelcolor=TEXT_SECONDARY)
+    env = report["environment"]
+    fig.suptitle(
+        f"Cost of running the pruned networks (seed 100)  ·  {env['machine']}, NumPy {env['numpy']} ({env['blas']}), 1 thread",
+        x=0.01, ha="left", fontsize=12, color=TEXT, fontweight="bold",
+    )
+    fig.tight_layout(rect=(0, 0.11, 1, 0.94))
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=160, facecolor=SURFACE)
     plt.close(fig)
