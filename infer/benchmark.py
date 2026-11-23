@@ -2,18 +2,13 @@
 
     uv run python -m infer.benchmark     # uses the models saved by `uv run python -m train.pareto`
 
-For the seed-100 network at every sparsity and criterion, runs the MNIST test
-set through every execution path in infer/sparse.py and records
+Runs the MNIST test set through every path in infer/sparse.py for the seed-100
+network at each sparsity, and records MACs and parameter bytes (exact), agreement
+with the dense forward pass, and time per batch at sizes 1, 32 and 256.
 
-* multiply-accumulates per example and parameter bytes (exact, machine-independent);
-* whether every path predicts the same class as the dense forward pass on every
-  test image, and the largest logit difference;
-* wall-clock time per batch at batch sizes 1, 32 and 256 (machine-specific).
-
-BLAS is pinned to one thread, so times are per core: the unit a server would
-schedule. (The script re-launches itself with the thread variables set, since
-they only take effect before NumPy is first imported.) Each timing is the
-median of 7 repeats after a warm-up, each repeat at least 50 ms long.
+BLAS is pinned to one thread. The thread variables only take effect before NumPy
+is imported, so the script re-launches itself with them set. Each timing is the
+median of 7 repeats of at least 50 ms after a warm-up.
 
 Writes results/part4/cost.json, cost.md and cost.png.
 """

@@ -14,7 +14,7 @@ SMALL = ExperimentConfig(dataset="spirals", hidden=(32, 32), epochs=30, batch_si
 
 
 def test_protocol_has_not_drifted():
-    """The defaults are the protocol fixed before the sweep was run."""
+    """The defaults are the protocol that produced the committed results."""
     assert SEEDS == tuple(range(100, 110))
     assert SPARSITIES == (0.5, 0.75, 0.9, 0.95, 0.98, 0.99)
     assert PRIMARY_SPARSITY == 0.95

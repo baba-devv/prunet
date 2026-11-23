@@ -1,29 +1,17 @@
-"""Inference for pruned MLPs, in plain NumPy, without the autodiff engine.
+"""Inference for pruned ReLU MLPs in plain NumPy, without the autodiff engine.
 
-Several ways to run the same pruned network, which differ in how much work
-they actually do:
+Four ways to run the same pruned network, giving the same outputs up to
+floating-point rounding:
 
-* `DensePath`: ordinary dense matrix products. On a pruned network this is
-  the dense-times-zero shortcut: every pruned weight is still multiplied, so
-  it costs exactly as much as the unpruned network.
-* `CompactDensePath`: dense matrix products on smaller matrices. Pruning can
-  leave whole units with no surviving inputs or outputs; `compact` removes
-  them exactly (section "Compaction" below). The remaining matrices still
-  contain zeros.
-* `CSRPath`: a sparse matrix product (compressed sparse rows, `CSRMatrix`)
-  on the compacted network. Only surviving weights are multiplied.
-* `AlignedDensePath`: the compacted network reshaped for the BLAS. It keeps
-  the first layer's full input width (gathering the surviving input columns
-  cost more than multiplying the dead ones) and zero-pads hidden widths to a
-  multiple of 32 (a 256x123 product took twice as long as 256x128).
+* `DensePath`: full-size matrices, i.e. the dense-times-zero shortcut.
+* `CompactDensePath`: dense products after `compact` removes dead inputs and units.
+* `AlignedDensePath`: compacted hidden units, full input width, hidden widths
+  zero-padded to a multiple of 32 (shapes this BLAS runs fast).
+* `CSRPath`: sparse products on the compacted network; only surviving weights
+  are multiplied.
 
-All paths give the same outputs up to floating-point rounding. Only ReLU
-networks are supported, because compaction needs the activation's value at a
-constant input.
-
-Cost accounting counts multiply-accumulates (MACs) of the weight matrices per
-example; bias additions and ReLUs (one per unit) are not counted. Parameter
-bytes are what the path holds in memory: float32 values, int32 indices.
+`macs` counts weight multiply-accumulates per example (biases and ReLUs not
+counted); `nbytes` is the parameter memory a path holds.
 """
 
 from __future__ import annotations
